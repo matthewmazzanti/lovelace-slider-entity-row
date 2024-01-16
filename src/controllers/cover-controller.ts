@@ -67,9 +67,19 @@ export class CoverController extends Controller {
   renderToggle(hass: any) {
     const stateObj = hass.states[this.stateObj.entity_id];
     console.log("Toggle", hass);
-    return html`
-    <ha-cover-controls .hass=${hass} .stateObj=${stateObj}></ha-cover_controls>
-    `;
+    switch (this.attribute) {
+      case "position":
+        return html`<ha-cover-controls
+          .hass=${hass}
+          .stateObj=${stateObj}>
+        </ha-cover-controls>`;
+
+      case "tilt":
+        return html`<ha-cover-tilt-controls
+          .hass=${hass}
+          .stateObj=${stateObj}>
+        </ha-cover-tilt-controls>`;
+    }
   }
 
   get hasSlider() {
