@@ -66,7 +66,6 @@ export class CoverController extends Controller {
 
   renderToggle(hass: any) {
     const stateObj = hass.states[this.stateObj.entity_id];
-    console.log("Toggle", hass);
     switch (this.attribute) {
       case "position":
         return html`<ha-cover-controls
